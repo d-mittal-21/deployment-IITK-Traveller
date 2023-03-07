@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import logo1 from './logo1.svg';
 
@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="App">
       <div className='logoHeader'>
-        <img src={logo1} className="logo"></img>
+        <img src={logo1} className="logo" alt='IITK Traveller'></img>
       </div>
       <header className="App-header">
         <div className='codeBlock'>
