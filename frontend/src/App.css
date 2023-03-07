@@ -1,0 +1,137 @@
+:root {
+  --red: hsl(350, 70%, 55%);
+  --teal: hsl(231, 70%, 62%);
+  --white: hsl(334, 7%, 95%);
+  --undefined: hsl(334, 7%, 95%);
+  --borderFormEls: hsl(0, 0%, 10%);
+  --bgFormEls: hsl(0, 0%, 14%);
+  --bgFormElsFocus: hsl(0, 7%, 20%);
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.logoHeader {
+  height: 10vh;
+  align-items: left;
+  background-color: black;
+}
+
+.logoHeader .logo {
+  height: 10vh;
+  margin-left: -78vw;
+}
+
+.codeBlock textarea {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  width: 40vw;
+  height: 50vh;
+  overflow: scroll;
+  background-color: #000000;
+  color: white;
+  font-size: large;
+  resize: none;
+}
+
+.btns button {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  line-height: 1.5;
+  padding: 15px 10px;
+  border: 1px solid var(--borderFormEls);
+  color: var(--white);
+  background: var(--bgFormEls);
+  transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
+    transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+.inputOutput textarea {
+  margin-top: 1vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  width: 30vw;
+  height: 20vh;
+  overflow-y: scroll;
+  resize: none;
+  background-color: #000000;
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-three {
+  color: #FFF;
+  transition: all 0.5s;
+  position: relative;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+.btn-three::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(255,255,255,0.1);
+  transition: all 0.3s;
+}
+.btn-three:hover::before {
+  opacity: 0 ;
+  transform: scale(0.5,0.5);
+}
+.btn-three::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border: 1px solid rgba(255,255,255,0.5);
+  transform: scale(1.2,1.2);
+}
+.btn-three:hover::after {
+  opacity: 1;
+  transform: scale(1,1);
+}
