@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './App.css';
 import logo1 from './logo1.svg';
 
-const endPoint = "http://127.0.0.1:8081/interpret"
+const endPoint = "http://127.0.0.1:8080/interpret"
 
 function App() {
   const [inputCode, setInputCode] = useState("");
