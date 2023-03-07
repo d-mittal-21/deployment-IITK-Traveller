@@ -1,66 +1,54 @@
-// use std::env;
-use std::process;
-use super::parser;
-use super::graph;
-use super::program_state;
+use super::lexer;
+use super::traveller;
 
-// pub fn interpret_from_file(){
-//     let args:Vec<String> = env::args().collect();
-
-//     let filename = match parser::take_arguments(&args) {
-//         Ok(s) => s,
-//         Err(_e) => {
-//             println!("Missing file name");
-//             process::exit(1);
-//         }
-//     };
-
-//     let code = match parser::get_code(&filename) {
-//         Ok(s) => s,
-//         Err(e) => {
-//             println!("Error reading {:?}", e);
-//             process::exit(1)
-//         }
-//     };
-
+// pub fn interpret(code: &str, input: &str) -> String{
+//     let input = std::io::Cursor::new(input.as_bytes());
+//     let mut output = String::new();
+//     // output.push(65 as u8);
+    
+//     let code = String::from(code);
+    
 //     let parsed_code = match parser::parse_code(&code){
 //         Ok(v) => v,
 //         Err(i) => {
-//             println!("Syntax Error on line {}", i);
-//             process::exit(1);
+//             panic!("Syntax Error on line {}", i);
 //         }
 //     };
-
-//     let graph = graph::generate_graph(parsed_code);
-
+    
+//     let graph = graph::generate_graph(parsed_code); 
 //     let mut state = program_state::ProgramState::new();
+//     // let serialized_graph = serde_json::to_string(&state).unwrap();
+    
+//     // println!("Hi");
+//     graph::traverse(&graph, &mut state, input, &mut output);
+//     // println!("{:?}", output);
 
-//     graph::traverse(&graph, &mut state);
+
+//     output
 // }
 
-pub fn interpret(code: &str, input: &str) -> String{
+pub fn interpret(code: &str, input: &str) -> Result<String, String>{
     let input = std::io::Cursor::new(input.as_bytes());
     let mut output = String::new();
-    // output.push(65 as u8);
-    
-    let code = String::from(code);
-    
-    let parsed_code = match parser::parse_code(&code){
-        Ok(v) => v,
-        Err(i) => {
-            println!("Syntax Error on line {}", i);
-            process::exit(1);
-        }
-    };
-    
-    let graph = graph::generate_graph(parsed_code); 
-    let mut state = program_state::ProgramState::new();
-    // let serialized_graph = serde_json::to_string(&state).unwrap();
-    
-    // println!("Hi");
-    graph::traverse(&graph, &mut state, input, &mut output);
-    // println!("{:?}", output);
 
+    let (tokens, lines) = lexer::store_input(code)?; //check this
+    let locations = lexer::create_map();
+    let (graph, increment_graph) = lexer::build_graph(&tokens, &locations, lines)?;
 
-    output
+    let mut mem: Vec<Vec<i32>> = vec![vec![0; 2048]];
+    let mut mem_flag: Vec<Vec<i8>> = vec![vec![0; 2048]];
+
+    let mut traveller = traveller::TravelStat::new(0, 0, 1, 0, 2, 0, 0, 0, 0);
+
+    traveller.travel(
+        &mut mem,
+        &mut mem_flag,
+        &locations,
+        &graph,
+        &increment_graph,
+        input,
+        &mut output
+    )?;
+
+    Ok(output)
 }
