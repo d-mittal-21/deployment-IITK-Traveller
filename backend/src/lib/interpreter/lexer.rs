@@ -1,8 +1,5 @@
 use std::collections::HashMap;
 use std::convert::TryInto;
-// use std::fs::File;
-// use std::io::{self, BufRead, BufReader, Lines};
-// use std::path::Path;
 use substring::Substring;
 
 // Returns an Iterator to the Reader of the lines of the file. The output is

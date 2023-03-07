@@ -1,32 +1,6 @@
 use super::lexer;
 use super::traveller;
 
-// pub fn interpret(code: &str, input: &str) -> String{
-//     let input = std::io::Cursor::new(input.as_bytes());
-//     let mut output = String::new();
-//     // output.push(65 as u8);
-    
-//     let code = String::from(code);
-    
-//     let parsed_code = match parser::parse_code(&code){
-//         Ok(v) => v,
-//         Err(i) => {
-//             panic!("Syntax Error on line {}", i);
-//         }
-//     };
-    
-//     let graph = graph::generate_graph(parsed_code); 
-//     let mut state = program_state::ProgramState::new();
-//     // let serialized_graph = serde_json::to_string(&state).unwrap();
-    
-//     // println!("Hi");
-//     graph::traverse(&graph, &mut state, input, &mut output);
-//     // println!("{:?}", output);
-
-
-//     output
-// }
-
 pub fn interpret(code: &str, input: &str) -> Result<String, String>{
     let input = std::io::Cursor::new(input.as_bytes());
     let mut output = String::new();
