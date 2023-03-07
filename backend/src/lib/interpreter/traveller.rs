@@ -176,7 +176,7 @@ impl TravelStat {
                 // print!("{} ", mem[self.mem1_lvl][self.mem1]);
 
                 output.push_str(&(mem[self.mem1_lvl][self.mem1].to_string()));
-                output.push_str("\n");
+                // output.push_str("\n");
 
                 return Ok(());
             }, // "iit_gate_out_1"
@@ -184,7 +184,7 @@ impl TravelStat {
                 // print!("{} ", mem[self.mem2_lvl][self.mem2]);
 
                 output.push_str(&(mem[self.mem2_lvl][self.mem2].to_string()));
-                output.push_str("\n");
+                // output.push_str("\n");
 
                 return Ok(());
             }, // "iit_gate_out_2"

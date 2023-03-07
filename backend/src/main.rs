@@ -3,6 +3,7 @@ use actix_web::{post, web, App, HttpServer, Responder, HttpResponse,};
 use serde::Deserialize;
 use serde::Serialize;
 use serde_json::json;
+use actix_cors::Cors;
 
 #[derive(Serialize,Deserialize)]
 struct Payload {
@@ -29,7 +30,14 @@ async fn interpret_handler(data: web::Form<Payload>) -> impl Responder{
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
 
-    HttpServer::new(|| App::new().service(interpret_handler))
+    HttpServer::new(|| App::new()
+    .wrap(
+                Cors::default()
+                    .allow_any_origin()
+                    .allow_any_method()
+                    .allow_any_header(),
+            )
+    .service(interpret_handler))
     .bind(("127.0.0.1", 8081))?
     .run()
     .await
