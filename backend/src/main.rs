@@ -30,6 +30,8 @@ async fn interpret_handler(data: web::Form<Payload>) -> impl Responder{
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
 
+    println!("Starting the server...");
+
     HttpServer::new(|| App::new()
     .wrap(
                 Cors::default()
