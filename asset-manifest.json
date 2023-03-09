@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/deployment-IITK-Traveller/static/css/main.de24954a.css",
-    "main.js": "/deployment-IITK-Traveller/static/js/main.9da929fc.js",
+    "main.css": "/deployment-IITK-Traveller/static/css/main.3d1e881c.css",
+    "main.js": "/deployment-IITK-Traveller/static/js/main.22a93ca5.js",
     "static/js/787.09a2e0fe.chunk.js": "/deployment-IITK-Traveller/static/js/787.09a2e0fe.chunk.js",
     "static/media/logo1.svg": "/deployment-IITK-Traveller/static/media/logo1.f317782b770935b5d3df413346ae5887.svg",
     "index.html": "/deployment-IITK-Traveller/index.html",
-    "main.de24954a.css.map": "/deployment-IITK-Traveller/static/css/main.de24954a.css.map",
-    "main.9da929fc.js.map": "/deployment-IITK-Traveller/static/js/main.9da929fc.js.map",
+    "main.3d1e881c.css.map": "/deployment-IITK-Traveller/static/css/main.3d1e881c.css.map",
+    "main.22a93ca5.js.map": "/deployment-IITK-Traveller/static/js/main.22a93ca5.js.map",
     "787.09a2e0fe.chunk.js.map": "/deployment-IITK-Traveller/static/js/787.09a2e0fe.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.de24954a.css",
-    "static/js/main.9da929fc.js"
+    "static/css/main.3d1e881c.css",
+    "static/js/main.22a93ca5.js"
   ]
 }
