@@ -46,3 +46,17 @@ async fn main() -> std::io::Result<()> {
     
 }
 
+
+// fn main(){
+//     let code = "start, 0, iit_gate_in_1
+//     iit_gate_in_1, 0, lecture_hall_eq
+//     lecture_hall_eq_f, 0, southern_labs_1
+//     southern_labs_1, 0, lecture_hall_eq
+//     lecture_hall_eq_t, 0, finish";
+
+//     let input = "8000";
+
+//     let out = interpret(code, input).unwrap();
+
+//     println!("{}", out);
+// }
