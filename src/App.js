@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import logo1 from './logo1.svg';
+import { FaHeart } from "react-icons/fa";
 
 const endPoint = "http://127.0.0.1:8080/interpret"
 
@@ -52,6 +53,7 @@ function App() {
           <textarea value={output} spellcheck="false" placeholder='Your Code Output'></textarea>
         </div>
       </header>
+      <div className='footer'>Made with  <FaHeart />  by Programming Club, IIT- Kanpur</div>
     </div>
   );
 }
