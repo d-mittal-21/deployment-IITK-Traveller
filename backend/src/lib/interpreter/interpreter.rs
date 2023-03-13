@@ -20,6 +20,7 @@ pub fn interpret(code: &str, input: &str) -> Result<String, String>{
         &locations,
         &graph,
         &increment_graph,
+        1000000,
         input,
         &mut output
     )?;

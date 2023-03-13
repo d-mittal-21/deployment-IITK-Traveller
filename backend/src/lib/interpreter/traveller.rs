@@ -645,37 +645,48 @@ impl TravelStat {
         locations: &HashMap<String, i32>,
         graph: &HashMap<i32, HashMap<i32, i32>>,
         increment_graph: &HashMap<(i32, i32), i32>,
+        mut depth: i32,
         input: Cursor<&[u8]>, output: &mut String
     ) -> Result<(), String> {
         // println!("mem_1 = {}, mem_2 = {}, mem_1_lvl = {}, mem_2_lvl = {}, cond_val = {}", self.mem1, self.mem2, self.mem1_lvl, self.mem2_lvl, self.cond);
         let mut input = input;
 
+        while depth >= 0 && self.curr_loc != locations["finish"] {
+            if self.curr_loc != locations["start"] {
+                self.perform_operation(
+                    self.curr_loc,
+                    mem,
+                    mem_flag,
+                    &locations,
+                    increment_graph,
+                    &mut input, 
+                    output,
+                )?;
+            }
+
+            if !graph[&self.curr_loc].contains_key(&self.cond) {
+                return Err(format!(
+                    "Stuck in landmark number {} with condition {}",
+                    self.curr_loc, self.cond
+                ));
+            }
+
+            self.prev_loc = self.curr_loc;
+            self.curr_loc = graph[&self.curr_loc][&self.cond];
+
+            depth = depth - 1;
+            // return self.travel(mem, mem_flag, locations, graph, increment_graph, input, output);
+        }
+
         if self.curr_loc == locations["finish"] {
             return Ok(());
         }
-
-        if self.curr_loc != locations["start"] {
-            self.perform_operation(
-                self.curr_loc,
-                mem,
-                mem_flag,
-                &locations,
-                increment_graph,
-                &mut input, 
-                output,
-            )?;
+        else if depth < 0 {
+            return Err(format!("Too many operations! Please check for infinite loops or other similar stack overflows."));
+        }
+        else {
+            return Err(format!("Something went wrong!"));
         }
 
-        if !graph[&self.curr_loc].contains_key(&self.cond) {
-            return Err(format!(
-                "Stuck in landmark number {} with condition {}",
-                self.curr_loc, self.cond
-            ));
-        }
-
-        self.prev_loc = self.curr_loc;
-        self.curr_loc = graph[&self.curr_loc][&self.cond];
-
-        return self.travel(mem, mem_flag, locations, graph, increment_graph, input, output);
     }
 }
